@@ -2,3 +2,9 @@
     text-align: center;
     margin-top: 100px;
 }
+.doggo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
