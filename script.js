@@ -16,7 +16,7 @@ function searchDoggos() {
         console.log('endpoint: ' + breedEndpoint);
     }
     
-    let url = `https://dog.ceo/api/breed/${breedEndpoint}/images/random`;
+    let url = `https://dog.ceo/api/breed/${breedEndpoint}/images/random/10`;
     const container = document.getElementById('doggoContainer');
     
     fetch(url)
@@ -34,14 +34,23 @@ function searchDoggos() {
     })
     .then(data => {
         const doggos = data.message;
-        console.log(doggos); 
+        console.log(doggos);
         container.innerHTML = `
             <h3 >${breed.charAt(0).toUpperCase() + breed.slice(1)}</h3>
-            <img src="${doggos}" alt="${breed.charAt(0).toUpperCase() + breed.slice(1)} Image" max-width="500%" />`;
+        `;
+        doggos.forEach((dog) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+            <img src="${dog}" alt="${breed.charAt(0).toUpperCase() + breed.slice(1)} Image" max-width="500%" />`;
+            container.appendChild(card);
+        });
+        
+            
     })
         .catch((error) => {
         console.error('Error al obtener los datos de los perritos:', error);
-        document.getElementById('doggoImageContainer').innerHTML = `
+        document.getElementById('doggoContainer').innerHTML = `
             <p>Something went wrong while fetching the doggos.</p>`;
     });
 }
