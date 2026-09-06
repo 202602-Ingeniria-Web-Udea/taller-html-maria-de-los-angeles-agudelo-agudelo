@@ -22,11 +22,6 @@ function searchDoggos() {
     fetch(url)
     .then((response) => {
         if (!response.ok) {
-            document.getElementById('doggoContainer').innerHTML = `
-            <p>I'm sorry, we couldn't find any dogs of that breed.</p>
-            <img src="./resources/sad-dog-rainy-dog.png" alt="Dog not found" />
-            <p>Try searching for another breed or check the spelling.</p>
-            `;
             throw new Error('Dog breed not found');
         } else {
             return response.json();
@@ -48,9 +43,12 @@ function searchDoggos() {
         
             
     })
-        .catch((error) => {
-        console.error('Error al obtener los datos de los perritos:', error);
+    .catch((error) => {
+        console.error('Error fetching doggos:', error);
         document.getElementById('doggoContainer').innerHTML = `
-            <p>Something went wrong while fetching the doggos.</p>`;
+        <p>I'm sorry, we couldn't find any dogs of that breed.</p>
+        <img src="./resources/sad-dog-rainy-dog.png" alt="Dog not found" />
+        <p>Try searching for another breed or check the spelling.</p>
+        `;
     });
 }

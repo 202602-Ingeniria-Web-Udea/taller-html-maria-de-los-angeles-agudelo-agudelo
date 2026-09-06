@@ -1,10 +1,143 @@
-.searching {
-    text-align: center;
-    margin-top: 100px;
+/* --- Variables CSS personalizadas reutilizables 
+(paleta de colores) --- */
+
+:root {
+  --bg: #f6ede0;
+  --bg-soft: #efe0c7;
+  --ink: #3e2c23;
+  --ink-soft: #7a6552;
+  --accent: #e08e45;
+  --accent-dark: #c46a2b;
+  --sage: #6b8f71;
+  --card-bg: #fffcf6;
+  --border: #dcc9a3;
 }
+
+/* Para evitar que en vez de que el padding y el border se sumen 
+al ancho de los elementos, se incluyan dentro de ese ancho */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.5rem 4rem;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Karla', sans-serif;
+}
+
+/* --- BUSCADOR --- */
+
+.searching {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.searching h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+
+#searchBar {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  width: 60%;
+  max-width: 320px;
+  border: 2px solid var(--border);
+  border-radius: 100px;
+  background-color: var(--card-bg);
+  color: var(--ink);
+  outline: none;
+}
+
+#searchBar:focus {
+  border-color: var(--accent);
+}
+
+#searchButton {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: var(--card-bg);
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  background-color: var(--accent-dark);
+}
+
+/* --- GRID --- */
+
+/*--- grid-template-columns arma la cuadrícula responsive, calculando
+cuantas columnas de mínimo 220px y máximo una fracción igual del espacio
+disponible caben en el ancho---*/
+
 .doggo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.75rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- grid-column 1/-1 le dice al elemento que ocupe todas las columnas --- */
+
+.doggo-container > h3 {
+  grid-column: 1 / -1;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.75rem;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+/* --- TARJETA DE LOS PERRITOS --- */
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 6px 6px 0 var(--bg-soft);
+}
+
+.card:hover {
+  box-shadow: 8px 10px 0 var(--bg-soft);
+  border-color: var(--accent);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* --- MENSAJES DE ERROR --- */
+
+.doggo-container p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.doggo-container img[alt="Dog not found"] {
+  grid-column: 1 / -1;
+  max-width: 220px;
+  margin: 1rem auto;
+  display: block;
 }
