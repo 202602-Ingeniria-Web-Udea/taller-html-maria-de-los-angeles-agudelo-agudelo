@@ -6,13 +6,13 @@ Proyecto realizado para el **Taller Evaluativo 1** del curso de Ingeniería Web 
 
 ## Descripción
 
-El usuario escribe el nombre de una raza de perro en el buscador y la aplicación consulta la Dog CEO API para traer 10 imágenes aleatorias de esa raza, mostrándolas en una galería con el nombre de la raza.
+El usuario escribe el nombre de una raza de perro en el buscador y la aplicación consulta la Dog CEO API para traer 12 imágenes aleatorias de esa raza, mostrándolas en una galería con el nombre de la raza y la sub-raza (cuando aplica) como atributo adicional.
 
 ### Características
 
 - Input de búsqueda por raza (soporta razas de una o dos palabras, ej: `husky` o `golden retriever`).
 - Botón para ejecutar la búsqueda.
-- Listado dinámico de 10 imágenes
+- Listado dinámico de 12 imágenes, cada una con nombre de raza y sub-raza.
 - Manejo de errores: raza inexistente, búsqueda vacía y fallos de red.
 - Diseño responsivo con grid adaptable.
 
@@ -58,9 +58,9 @@ Y luego abre `http://localhost:5500` en tu navegador.
 
 1. El usuario escribe una raza en el input y presiona el botón de búsqueda.
 2. Si la raza tiene dos palabras (ej: `golden retriever`), la app invierte el orden y las une con `/`, adaptándose al formato de endpoint que exige la Dog CEO API (ej: `retriever/golden`).
-3. Se hace una petición `fetch` a `https://dog.ceo/api/breed/{raza}/images/random/10`.
+3. Se hace una petición `fetch` a `https://dog.ceo/api/breed/{raza}/images/random/12`.
 4. Si la raza no existe, se muestra un mensaje de error junto con una imagen ilustrativa.
-5. Si la raza existe, se genera dinámicamente una tarjeta por cada imagen recibida, mostrando la foto y el nombre de la raza.
+5. Si la raza existe, se genera dinámicamente una tarjeta por cada imagen recibida, mostrando la foto y el nombre de la raza y la sub-raza (si aplica).
 
 ## Autor
 
