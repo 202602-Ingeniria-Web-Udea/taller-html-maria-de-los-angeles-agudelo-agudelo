@@ -24,7 +24,7 @@ function searchDoggos() {
         console.log('endpoint: ' + breedEndpoint);
     }
     
-    let url = `https://dog.ceo/api/breed/${breedEndpoint}/images/random/10`;
+    let url = `https://dog.ceo/api/breed/${breedEndpoint}/images/random/12`;
     const container = document.getElementById('doggoContainer');
     
     fetch(url)
@@ -51,7 +51,10 @@ function searchDoggos() {
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
-            <img src="${dog}" alt="${breed.charAt(0).toUpperCase() + breed.slice(1)} Image" max-width="500%" />`;
+            <img src="${dog}" alt="${breed.charAt(0).toUpperCase() + breed.slice(1)} Image" max-width="500%" />
+            <h4>Breed: ${breedEndpoint.split('/')[0].charAt(0).toUpperCase() + breedEndpoint.split('/')[0].slice(1)}</h4>
+            <p>Sub-breed: ${breedEndpoint.split('/')[1] || 'None'}</p>
+            `;
             container.appendChild(card);
         });
         
